@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Create User</h1>
+    
+    @if ($errors->any()) 
+        <div class="alert alert-danger">
+            <ul> 
+                @foreach ($errors->all() as $error) 
+                <li>{{ $error }} </li>
+            </ul>
+        </div>
+        @endif
+        
+    <form action="/users/
+    " method="POST">
+        @csrf
+        Name: <input type="text" name="name"><br><br>
+        Email: <input type="email" name="email"><br><br>
+        Password: <input type="password" name="password"><br><br>
+        Confirm Password: <input type="password" name="confirm_password"><br><br>
+        Role:  
+        <select name="role_id">
+            @foreach($roles as $role)
+            <option value={{$role->id}}> {{$role->name}} </option>
+            @endforeach
+        </select>
+</form>
+</body>
+</html>
